@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-var Client = require('./../lib/client');
-var Parser = require('./../lib/result-parser');
+var Client = require('../lib/client');
+var Parser = require('../lib/result-parser');
 
 var client = new Client();
 var parser = new Parser();

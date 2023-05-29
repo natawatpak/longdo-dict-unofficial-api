@@ -3,7 +3,7 @@
 const HOST = 'dict.longdo.com';
 const PATH = '/mobile.php?search=';
 
-var http = require('http');
+var https = require('https');
 
 class LongdoDictClient {
 
@@ -22,7 +22,8 @@ class LongdoDictClient {
       var html = String();
 
       // build request message
-      var req = http.request(options, (res) => {
+      var req = https.get(options, (res) => {
+
         console.log(`STATUS: ${res.statusCode}`);
         console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
         res.setEncoding('utf8');
@@ -37,7 +38,7 @@ class LongdoDictClient {
         });
 
         res.on('error', () => {
-          console.log(`priblem with request: ${e.message}`);
+          console.log(`problem with request: ${e.message}`);
           reject(e.message);
         });
       });
